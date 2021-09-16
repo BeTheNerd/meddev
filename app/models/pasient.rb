@@ -1,0 +1,2 @@
+class Pasient < ApplicationRecord
+end
