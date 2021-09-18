@@ -1,10 +1,11 @@
 
 
 const Doctor = ({doctor}) => {
+  console.log(doctor)
   return (
     <div>
       {doctor.name}
-      {doctor.age}
+      {doctor.phone}
     </div>
     
   )
