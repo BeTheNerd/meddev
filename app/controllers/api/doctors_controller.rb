@@ -27,6 +27,10 @@ before_action :set_doctor, only: [:show, :update, :destroy]
     end
   end
 
+  def destroy
+    @doctor.destroy
+    render json: @doctor
+  end
 
   private
 
