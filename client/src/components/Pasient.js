@@ -3,7 +3,7 @@
 const Pasient = () => {
   return(
     <div>
-      "Fuck"
+      List
     </div>
 
 

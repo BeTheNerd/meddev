@@ -7,6 +7,7 @@ import Home from "./components/Home";
 import Things from "./components/Things";
 import Doctors from "./components/Doctors";
 import Pasient from "./components/Pasient";
+import { UpdateDoc } from "./components/UpdateDoc";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/things" component={Things} />
           <Route exact path="/doctors" component={Doctors} />
+          <Route exact path="/doctors/:id/update" component={UpdateDoc} />
           <Route exact path="/pasient" component={Pasient} />
           <Route component={() => <p>react router 404 path not found</p>} />
         </Switch>

@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import Doctor from "./Doctor";
 import { Card, Button, Icon } from "semantic-ui-react";
-
-
+import { useHistory } from "react-router";
 
 export default function Doctors() {
 
@@ -11,17 +10,23 @@ export default function Doctors() {
   const [doctorName, setDoctorName] = useState("");
   const [doctorPhone, setDoctorPhone] = useState("");
 
+  const history = useHistory();
+
   useEffect(() => {
     loadDoctors();
   }, []);
 
   const loadDoctors = async () => {
-    try{
+    try {
       const res = await axios.get("/api/doctors");
       setDoctors(res.data);
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const editDoctor = (id) => {
+    history.push(`/doctors/${id}/update`);
   };
 
   const deleteDoctor = async (id) => {
@@ -53,9 +58,14 @@ export default function Doctors() {
           <Card.Content>
             <Doctor doctor={doctor} />
           </Card.Content>
-          <Button icon color='purple' onClick={() => deleteDoctor(doctor.id)}>
-            <Icon name='delete'/>
-          </Button>
+          <div className='ui two buttons'>
+            <Button icon color='pink' onClick={() => editDoctor(doctor.id)}>
+              <Icon name='edit'/>
+            </Button>
+            <Button icon color='purple' onClick={() => deleteDoctor(doctor.id)}>
+              <Icon name='delete'/>
+            </Button>
+          </div>
         </Card>
 
       );
@@ -84,6 +94,7 @@ export default function Doctors() {
         </form>
 
       </div>
+      <br/>
       <Card.Group>
         {renderDoctors()}
       </Card.Group>
