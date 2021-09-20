@@ -1,13 +1,14 @@
+import { Card } from "semantic-ui-react";
 
 
 const Doctor = ({doctor}) => {
   console.log(doctor)
 
   return (
-    <div>
-      <h2>{doctor.name}</h2>
-      <div>{doctor.phone}</div>
-    </div>
+    <>
+      <Card.Header>{doctor.name}</Card.Header>
+      <Card.Meta>{doctor.phone}</Card.Meta>
+    </>
   )
 };
 

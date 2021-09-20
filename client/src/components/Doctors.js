@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import Doctor from "./Doctor";
-import { Button, Icon } from "semantic-ui-react";
+import { Card, Button, Icon } from "semantic-ui-react";
 
 
 
@@ -47,15 +47,16 @@ export default function Doctors() {
   };
 
   const renderDoctors = () => {
-
     return doctors.map( doctor => {
       return (
-        <div key={doctor.id}>
-          <Doctor doctor={doctor} />
+        <Card key={doctor.id}>
+          <Card.Content>
+            <Doctor doctor={doctor} />
+          </Card.Content>
           <Button icon color='purple' onClick={() => deleteDoctor(doctor.id)}>
             <Icon name='delete'/>
           </Button>
-        </div>
+        </Card>
 
       );
     });
@@ -83,7 +84,9 @@ export default function Doctors() {
         </form>
 
       </div>
-      {renderDoctors()}
+      <Card.Group>
+        {renderDoctors()}
+      </Card.Group>
     </div>
   );
 }
